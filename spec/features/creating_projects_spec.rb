@@ -10,6 +10,6 @@ RSpec.feature "Users can create new projects" do
     fill_in "Description", with: "A text editor for everyone"
     click_button "Create Project"
 
-    expect(page).to havev_content "Project has been created."
+    expect(page).to have_content "Project has been created."
   end
 end
