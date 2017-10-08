@@ -3,6 +3,8 @@
 @import "font-awesome";
 @import "projects";
 
+@import "responsive";
+
 header {
   @extend .page-header;
   position: relative;
@@ -11,6 +13,10 @@ header {
   &:first-child {
     margin-top: 20px;
   }
+}
+
+body {
+  padding-top: 70px;
 }
 
 .page-header {
@@ -29,11 +35,6 @@ header {
 ul.actions {
   @extend .list-unstyled;
   @extend .list-inline;
-  position: absolute;
-  bottom: -2px;
-  right: 2px;
-  max-width: 45%;
-  text-align: right;
 }
 
 a.new, a.edit, a.delete {
@@ -54,7 +55,7 @@ a.new {
   }
 }
 a.edit {
-  @extend .btn-success;
+  @extend .btn-primary;
 
   &:before {
     @extend .fa-pencil;
@@ -62,7 +63,7 @@ a.edit {
 }
 
 a.delete {
-  @extend .btn-success;
+  @extend .btn-danger;
 
   &:before {
     @extend .fa-trash;
