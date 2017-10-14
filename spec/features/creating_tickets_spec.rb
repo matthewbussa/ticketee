@@ -1,7 +1,11 @@
 require "rails_helper"
 
 RSpec.feature "Users can create new tickets" do
+  let(:user) { FactoryGirl.create(:user) }
+
   before do
+    login_as(user)
+    
     project = FactoryGirl.create(:project, name: "Internet Explorer")
 
     visit project_path(project)
@@ -14,6 +18,11 @@ RSpec.feature "Users can create new tickets" do
     click_button "Create Ticket"
 
     expect(page).to have_content "Ticket has been created."
+
+    within("#ticket") do
+      expect(page).to have_content "Author: #{user.email}"
+    end
+
   end
 
   scenario "when providing invalid attributes" do
@@ -33,5 +42,5 @@ RSpec.feature "Users can create new tickets" do
     expect(page).to have_content "Description is too short"
 
   end
-  
+
 end
